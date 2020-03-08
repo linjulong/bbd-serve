@@ -16,8 +16,7 @@ module.exports = app => {
                 console.log('不在线哦')
                 //以message_+username为key维护一个队列，队列记录着关于用户的离线信息
                 //插入数据库
-                await app.redis.lpush('message_' + message.receive_id, JSON.stringify(data));
-                let data1 = await app.redis.lrange('message', 0, -1);
+                await app.redis.lpush('message_' + message.receive_id, JSON.stringify(message));
             }
             // const say = await this.ctx.service.user.say();
             //this.ctx.app.io.emit('res', 'say');

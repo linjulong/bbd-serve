@@ -47,7 +47,8 @@ class GameService extends Service {
         }
 
         let include = [{
-            model: ctx.model.User
+            model: ctx.model.User,
+            include: [{ model: ctx.model.GameComment }]
         }];
 
         if (keyword != '') {
@@ -97,15 +98,15 @@ class GameService extends Service {
         const { ctx } = this;
         return await ctx.model.Game.findAll({
             include: [{
-                    model: ctx.model.GameAthletes,
-                    where: { username: username }
-                },
-                {
-                    model: ctx.model.User,
-                    attributes: { exclude: ['password'] }
-                }, {
-                    model: ctx.model.GameComment
-                }
+                model: ctx.model.GameAthletes,
+                where: { username: username }
+            },
+            {
+                model: ctx.model.User,
+                attributes: { exclude: ['password'] }
+            }, {
+                model: ctx.model.GameComment
+            }
             ]
         });
     }

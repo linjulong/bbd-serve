@@ -11,7 +11,8 @@ module.exports = app => {
                     receive = JSON.parse(receive);
                     ctx.socket.to(receive.id).emit('client_receive_comment', message[i]);
                 } else {
-                    console.log('不在线哦')
+                    console.log('不在线哦');
+                    await app.redis.lpush('message_' + message[i].be_rate_id, JSON.stringify(message[i]));
                 }
             }
 

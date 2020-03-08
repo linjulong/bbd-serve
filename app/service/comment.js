@@ -22,6 +22,16 @@ class CommentService extends Service {
             }]
         });
     }
+
+    //查询rate和
+    async sum(username) {
+        const { ctx } = this;
+        return await ctx.model.GameComment.sum('rate', { where: { be_rate_id: username } });
+    }
+    async commentNum(username) { //评论数
+        const { ctx } = this;
+        return await ctx.model.GameComment.count({ where: { be_rate_id: username } });
+    }
 }
 
 module.exports = CommentService;

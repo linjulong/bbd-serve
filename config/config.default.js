@@ -109,7 +109,7 @@ module.exports = appInfo => {
         init: {}, // passed to engine.io
         namespace: {
             '/': {
-                connectionMiddleware: ['auth'],
+                connectionMiddleware: ['auth','sendOfflineMsg'],
                 packetMiddleware: [],
             }
         },

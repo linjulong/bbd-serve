@@ -5,7 +5,7 @@ const Service = require('egg').Service;
 class UserService extends Service {
     async getUserByPk(username) {
         const { ctx } = this;
-        return await ctx.model.User.findByPk(username, { attributes: { exclude: ['password'] }, include: [{ model: ctx.model.Concern }] });
+        return await ctx.model.User.findByPk(username, { attributes: { exclude: ['password'] }, include: [{ model: ctx.model.Concern, include: [{ model: ctx.model.User, attributes: { exclude: ['password'] }, include: [{ model: ctx.model.GameComment }] }] }] });
     }
     async updateUserInfo(userInfo) {
         const { ctx } = this;

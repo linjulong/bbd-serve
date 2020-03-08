@@ -27,6 +27,7 @@ class ConcernService extends Service {
             include: [{
                 model: ctx.model.User,
                 attributes: { exclude: ['password'] },
+                include: [{ model: ctx.model.GameComment }]
             }],
             where: { username: username }
         })

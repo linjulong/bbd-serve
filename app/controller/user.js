@@ -93,10 +93,19 @@ class UserController extends Controller {
         //const concern_number = await ctx.service.concern.concernCount(username);
         let fan_number = await ctx.service.concern.fansCount(username);
         let game_number = await ctx.service.game.count(username);
+        //总分
+        let rateAll = await ctx.service.comment.sum(username);
+        let rateNum = await ctx.service.comment.commentNum(username);
+        if (rateNum) {
+            rateAll = (rateAll + 1.5) / (rateNum + 1);
+        } else {
+            rateAll = 1.5;
+        }
         userInfo = userInfo.get({ plain: true });
         userInfo.game_number = game_number;
         userInfo.concern_number = userInfo.concerns.length;
         userInfo.fan_number = fan_number;
+        userInfo.rate = rateAll;
         ctx.status = 200;
         ctx.body = {
             msg: '查询成功',

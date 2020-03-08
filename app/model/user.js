@@ -12,23 +12,14 @@ module.exports = app => {
         tag: { type: STRING(20), comment: "标签" },
         motto: { type: STRING(200), comment: "座右铭" },
         credit: { type: INTEGER(3), defaultValue: 100, comment: "信用" },
-        rate: { type: FLOAT(11, 1), defaultValue: 0, comment: "评分" }
+        //rate: { type: FLOAT(11, 1), defaultValue: 0, comment: "评分" }
     });
-    User.associate = function() {
+    User.associate = function () {
         app.model.User.hasMany(app.model.Game, { foreignKey: 'username', targetKey: 'username' });
         app.model.User.hasMany(app.model.Equipment, { foreignKey: 'username', targetKey: 'username' });
         app.model.User.hasMany(app.model.Concern, { foreignKey: 'username', targetKey: 'username' });
         app.model.User.hasMany(app.model.Concern, { foreignKey: 'username', targetKey: 'concern_id' });
-
-        app.model.User.hasMany(app.model.GameComment, { foreignKey: 'username', targetKey: 'rate_id' });
-        //app.model.User.belongsToMany(app.model.GameComment, { through: app.model.Game });
-        // app.model.User.belongsToMany(app.model.Concern, {
-        //     through: {
-        //         model: app.model.UserConcern,
-        //         unique: false,
-        //     },
-        //     constraints: false
-        // });
+        app.model.User.hasMany(app.model.GameComment, { foreignKey: 'be_rate_id', targetKey: 'rate_id' });
     }
     return User;
 };

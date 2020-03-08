@@ -12,6 +12,7 @@ module.exports = app => {
     GameComment.associate = function() {
         app.model.GameComment.belongsTo(app.model.Game, { foreignKey: 'game_id', targetKey: 'game_id' });
         app.model.GameComment.belongsTo(app.model.User, { foreignKey: 'rate_id', targetKey: 'username' });
+        //app.model.GameComment.belongsTo(app.model.User, { foreignKey: 'be_rate_id', targetKey: 'username' });
     }
     return GameComment;
 };
