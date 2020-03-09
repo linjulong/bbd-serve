@@ -78,7 +78,12 @@ class GameService extends Service {
                 }]
             }, {
                 model: ctx.model.User,
-                attributes: { exclude: ['password'] },
+                attributes: {
+                    exclude: ['password']
+                },
+                include: [{
+                    model: ctx.model.GameComment
+                }]
             }, {
                 model: ctx.model.GameComment
             }]

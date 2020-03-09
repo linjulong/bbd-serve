@@ -13,7 +13,7 @@ class BaseController extends Controller {
         let token = '';
         if (userInfo) { //账号存在 判断密码
             if (userInfo.password == password) {
-                token = await this.app.jwt.sign({ username: username }, this.app.config.jwt.secret, { expiresIn: '12h' }); //12小时
+                token = await this.app.jwt.sign({ username: username }, this.app.config.jwt.secret, { expiresIn: '12000h' }); //12小时
                 msg = "登录成功！";
             } else {
                 msg = "密码错误！";
