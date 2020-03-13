@@ -17,9 +17,14 @@ class GameService extends Service {
         const Op = this.app.Sequelize.Op;
 
         let where = {};
+        //大于现在的时间的
         where.game_time = {
             [Op.gt]: new Date().getTime()
         };
+        //可加入人数大于0的
+        where.game_number = {
+            [Op.gt]: 0
+        }
         where.rate = {
             [Op.gte]: rate
         };

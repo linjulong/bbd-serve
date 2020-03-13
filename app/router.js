@@ -26,5 +26,7 @@ module.exports = app => {
     // app.io.of('/')
     io.route('chat', app.io.controller.chat.index);
     io.route('comment', app.io.controller.comment.index);
+    io.route('verify', app.io.controller.game.verify);
+    io.route('gameNotiy', app.io.controller.game.notiy);
     //io.of('/').route('server', io.controller.home.server);
 };

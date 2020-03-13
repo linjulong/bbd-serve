@@ -11,7 +11,7 @@ module.exports = app => {
         weight: { type: INTEGER(3), comment: "体重" },
         tag: { type: STRING(20), comment: "标签" },
         motto: { type: STRING(200), comment: "座右铭" },
-        credit: { type: INTEGER(3), defaultValue: 100, comment: "信用" },
+        credit: { type: INTEGER(3), defaultValue: 70, comment: "信用", validate: { max: 100, min: 0 } },
         //rate: { type: FLOAT(11, 1), defaultValue: 0, comment: "评分" }
     });
     User.associate = function () {

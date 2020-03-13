@@ -20,7 +20,6 @@ class GameController extends Controller {
             return;
         }
 
-
         const lat = ctx.request.body.lat;
         const lng = ctx.request.body.lng;
         const result = await ctx.curl(`https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=RCDBZ-ALJKJ-HNIFV-KB4ZJ-CJOW6-2XFEX`, {

@@ -18,9 +18,10 @@ module.exports = app => {
         remarks: { type: STRING, comment: "备注" },
         chargeable: { type: BOOLEAN, allowNull: false, comment: "场地是否收费" },
         cost: { type: DECIMAL(10, 2), allowNull: false, comment: "场地价钱" },
-        rate: { type: FLOAT(11, 1), defaultValue: 0, comment: "评分限定" }
+        rate: { type: FLOAT(11, 1), defaultValue: 0, comment: "评分限定" },
+        verify: { type: BOOLEAN, allowNull: false, comment: "申请加入审核" }
     });
-    Game.associate = function() {
+    Game.associate = function () {
         app.model.Game.belongsTo(app.model.User, { foreignKey: 'username', targetKey: 'username' });
         app.model.Game.hasMany(app.model.GameAthletes, { foreignKey: 'game_id', targetKey: 'game_id' });
         app.model.Game.hasMany(app.model.GameComment, { foreignKey: 'game_id', targetKey: 'game_id' });
