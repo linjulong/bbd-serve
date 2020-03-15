@@ -11,6 +11,7 @@ module.exports = app => {
     router.put('/user/checkReset', controller.user.checkReset);
     router.get('/user/game/show', controller.user.gameShow); //获取个人的全部比赛
     router.get('/user/games/show', controller.user.gamesShow); //聊天页面获取未开始比赛
+    router.get('/user/updateChatListUser', controller.user.updateChatListUser); //获取聊天列表用户信息
     router.get('/equipment/all', controller.equipment.showEquipmentByUsers);
     router.put('/user/reset', controller.user.reset);
     router.post('/game/join', controller.game.join);

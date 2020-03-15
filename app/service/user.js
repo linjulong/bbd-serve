@@ -29,6 +29,14 @@ class UserService extends Service {
         await ctx.model.User.decrement('credit', { where: { username: username }, by: 3 });
         return;
     }
+
+    async getUseInfoForChatList(users) {
+        const { ctx } = this;
+        const Op = this.app.Sequelize.Op;
+        return await ctx.model.User.findAll({
+            where: { [Op.or]: users }, attributes: { exclude: ['password'] }, raw: true
+        });
+    }
 }
 
 module.exports = UserService;

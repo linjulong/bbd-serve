@@ -144,6 +144,21 @@ class UserController extends Controller {
         const { ctx } = this;
         ctx.body = '修改页面';
     }
+    async updateChatListUser() {
+        const { ctx } = this;
+        const users = ctx.request.query.username.split(',');
+        let arr = [];
+        users.forEach(item => {
+            let obj = {};
+            obj.username = item;
+            arr.push(obj);
+        })
+        const usersInfo = await ctx.service.user.getUseInfoForChatList(arr)
+        ctx.status = 200;
+        ctx.body = {
+            usersInfo
+        }
+    }
 }
 
 module.exports = UserController;
