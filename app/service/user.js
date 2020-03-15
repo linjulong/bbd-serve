@@ -17,6 +17,18 @@ class UserService extends Service {
         await ctx.model.User.update({ password: password }, { where: { username: username } });
         return;
     }
+
+    async addCredit(username) {
+        const { ctx } = this;
+        await ctx.model.User.increment('credit', { where: { username: username } });
+        return;
+    }
+
+    async reduceCredit(username) {
+        const { ctx } = this;
+        await ctx.model.User.decrement('credit', { where: { username: username }, by: 3 });
+        return;
+    }
 }
 
 module.exports = UserService;

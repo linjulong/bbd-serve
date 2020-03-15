@@ -1,11 +1,14 @@
 module.exports = app => {
-    const { STRING, INTEGER, FLOAT } = app.Sequelize;
+    const { STRING, INTEGER } = app.Sequelize;
+    const myHost = app.config.myHost;
     const User = app.model.define('user', {
         username: { type: STRING(16), allowNull: false, primaryKey: true, comment: "账号" },
         password: { type: STRING(18), allowNull: false, comment: "密码" },
         phone: { type: STRING(13), allowNull: false, unqiue: true, comment: "电话" },
         nickname: { type: STRING(10), allowNull: false, defaultValue: '蔡徐坤', comment: "昵称" },
-        avatar: { type: STRING(200), allowNull: false, comment: "头像" },
+        avatar: {
+            type: STRING(200), allowNull: false, defaultValue: `http://${myHost}:7002/public/images/avatar/caixukun.jpg`, comment: "头像"
+        },
         orientation: { type: STRING(50), comment: "位置" },
         stature: { type: INTEGER(3), comment: "身高" },
         weight: { type: INTEGER(3), comment: "体重" },

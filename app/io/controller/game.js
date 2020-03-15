@@ -24,7 +24,7 @@ module.exports = app => {
             if (await app.redis.exists(message.receive_id)) {
                 let receive = await app.redis.get(message.receive_id);
                 //向目标用户发送消息
-                receive = JSON.parse(receive);
+                receive = JSON.parse(receive); 
                 ctx.socket.to(receive.id).emit('client_receive_comment', message);
             } else {
                 console.log('不在线哦')

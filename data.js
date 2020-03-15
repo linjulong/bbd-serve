@@ -86,20 +86,7 @@ const equipment_image = [
     { equipment_id: 10, img_url: `http://${myHost}:7002/public/images/avatar/defaultAvatar.jpg` },
     { equipment_id: 11, img_url: `http://${myHost}:7002/public/images/equipment/1575264708231baby-beach-blur-1166989.jpg` },
     { equipment_id: 12, img_url: `http://${myHost}:7002/public/images/equipment/1575288828950timg (2).jpg` },
-    { equipment_id: 13, img_url: `http://${myHost}:7002/public/images/avatar/defaultAvatar.jpg` },
-    { equipment_id: 14, img_url: `http://${myHost}:7002/public/images/equipment/1575264708231baby-beach-blur-1166989.jpg` },
-    { equipment_id: 15, img_url: `http://${myHost}:7002/public/images/equipment/1575288828950timg (2).jpg` },
-    { equipment_id: 16, img_url: `http://${myHost}:7002/public/images/avatar/defaultAvatar.jpg` },
-    { equipment_id: 17, img_url: `http://${myHost}:7002/public/images/equipment/1575264708231baby-beach-blur-1166989.jpg` },
-    { equipment_id: 18, img_url: `http://${myHost}:7002/public/images/equipment/1575288828950timg (2).jpg` },
-    { equipment_id: 19, img_url: `http://${myHost}:7002/public/images/avatar/defaultAvatar.jpg` },
-    { equipment_id: 20, img_url: `http://${myHost}:7002/public/images/equipment/1575264708231baby-beach-blur-1166989.jpg` },
-    { equipment_id: 21, img_url: `http://${myHost}:7002/public/images/equipment/1575288828950timg (2).jpg` },
-    { equipment_id: 22, img_url: `http://${myHost}:7002/public/images/avatar/defaultAvatar.jpg` },
-    { equipment_id: 23, img_url: `http://${myHost}:7002/public/images/equipment/1575264708231baby-beach-blur-1166989.jpg` },
-    { equipment_id: 24, img_url: `http://${myHost}:7002/public/images/equipment/1575288828950timg (2).jpg` },
-    { equipment_id: 25, img_url: `http://${myHost}:7002/public/images/avatar/defaultAvatar.jpg` },
-    { equipment_id: 26, img_url: `http://${myHost}:7002/public/images/avatar/defaultAvatar.jpg` }
+    { equipment_id: 13, img_url: `http://${myHost}:7002/public/images/avatar/defaultAvatar.jpg` }
 ]
 
 const comments = [

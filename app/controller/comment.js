@@ -26,6 +26,10 @@ class CommentController extends Controller {
 
         try {
             await ctx.service.comment.create(ctx.request.body);
+            //添加信用评分
+            for (var i = 0; i < ctx.request.body.length; i++) {
+                await ctx.service.user.addCredit(ctx.request.body[i].be_rate_id);
+            }
         } catch (error) {
             console.log(error)
             ctx.status = 403;

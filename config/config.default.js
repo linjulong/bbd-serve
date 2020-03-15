@@ -109,7 +109,7 @@ module.exports = appInfo => {
         init: {}, // passed to engine.io
         namespace: {
             '/': {
-                connectionMiddleware: ['auth','sendOfflineMsg'],
+                connectionMiddleware: ['auth', 'sendOfflineMsg'],
                 packetMiddleware: [],
             }
         },
@@ -119,7 +119,8 @@ module.exports = appInfo => {
     const userConfig = {
         // myAppName: 'egg',
         avatar: 'app/public/images/avatar/',
-        equipment: 'app/public/images/equipment'
+        equipment: 'app/public/images/equipment',
+        myHost
     };
 
     config.redis = {

@@ -70,6 +70,9 @@ class GameController extends Controller {
     async destroy() {
         const { ctx } = this;
         await ctx.service.game.delete(ctx.params.id);
+        //扣除信用评分
+        const username = await ctx.getUsername();
+        await ctx.service.user.reduceCredit(username);
         ctx.status = 204;
         ctx.body = {
             msg: 'ok'
