@@ -73,6 +73,20 @@ class BaseController extends Controller {
             }
         }
     }
+
+    async getLocation() {
+        const { ctx } = this;
+        const { lat, lng } = ctx.request.query;
+
+        const result = await ctx.curl(`https://apis.map.qq.com/ws/geocoder/v1/?location=${lat},${lng}&key=RCDBZ-ALJKJ-HNIFV-KB4ZJ-CJOW6-2XFEX`, {
+            dataType: 'json'
+        });
+
+        ctx.status = 200;
+        ctx.body = {
+            result
+        }
+    }
 }
 
 module.exports = BaseController;
