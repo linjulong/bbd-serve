@@ -2,6 +2,7 @@
 
 'use strict';
 const os = require('os');
+const path = require('path');
 ///////////////////获取本机ip///////////////////////
 function getIPAdress() {
     var interfaces = os.networkInterfaces();
@@ -31,7 +32,7 @@ module.exports = appInfo => {
     config.keys = appInfo.name + '_1567931979512_5170';
 
     // add your middleware config here
-    config.middleware = ['authorization'];
+    config.middleware = ['authorization', 'compress'];
 
     config.authorization = {
         enable: false,
@@ -44,6 +45,20 @@ module.exports = appInfo => {
                 return true;
             }
         }
+    };
+
+    // 配置compress
+    config.compress = {
+        threshold: 2048 // 超过2048B进行压缩，不写默认为1024B
+    };
+
+    // static files and cache files
+    config.static = {
+        dynamic: true, // 如果当前访问的静态资源没有缓存，则缓存静态文件，和`preload`配合使用；
+        preload: false,
+        dir: path.join(appInfo.baseDir, 'app/public'),
+        maxAge: 31536000, // in prod env, 0 in other envs
+        buffer: true, // in prod env, false in other envs
     };
 
     //配置端口信息
