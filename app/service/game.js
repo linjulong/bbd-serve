@@ -15,7 +15,6 @@ class GameService extends Service {
     async index(page, district, game_type, duration, game_part, orientation, rate, chargeable, keyword) {
         const { ctx } = this;
         const Op = this.app.Sequelize.Op;
-
         let where = {};
         //大于现在的时间的
         where.game_time = {
@@ -28,34 +27,21 @@ class GameService extends Service {
         where.rate = {
             [Op.gte]: rate
         };
-        if (district != '全部') {
-            where.district = district;
-        }
-        if (game_type != '全部') {
-            where.game_type = game_type;
-        }
-        if (duration != 0) {
-            where.duration = duration;
-        }
+        if (district != '全部') where.district = district;
+        if (game_type != '全部') where.game_type = game_type;
+        if (duration != 0) where.duration = duration;
         if (orientation != '全部') {
             where.orientation = {
                 [Op.like]: `%${orientation}%`
             }
         }
-        if (chargeable !== '全部') {
-            where.chargeable = chargeable;
-        }
+        if (chargeable !== '全部') where.chargeable = chargeable;
         let order = [];
-
-        if (game_part == '最新') {
-            order[0] = ['create_stamp', 'DESC'];
-        }
-
+        if (game_part == '最新') order[0] = ['create_stamp', 'DESC'];
         let include = [{
             model: ctx.model.User,
             include: [{ model: ctx.model.GameComment }]
         }];
-
         if (keyword != '') {
             include[0].where = {
                 nickname: {
@@ -63,7 +49,6 @@ class GameService extends Service {
                 }
             }
         }
-
         return await ctx.model.Game.findAndCountAll({
             limit: 10,
             offset: (page - 1) * 10, //跳过条数

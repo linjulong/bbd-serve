@@ -153,7 +153,8 @@ class UserController extends Controller {
             obj.username = item;
             arr.push(obj);
         })
-        const usersInfo = await ctx.service.user.getUseInfoForChatList(arr)
+        const usersInfo = await ctx.service.user.getUseInfoForChatList(arr);
+        
         ctx.status = 200;
         ctx.body = {
             usersInfo

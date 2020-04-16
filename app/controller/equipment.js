@@ -7,7 +7,6 @@ const fs = require('fs');
 class EquipmentController extends Controller {
     async create() {
         const { ctx } = this;
-
         // 获取文件流
         //{ autoFields: true }:可以将除了文件的其它字段提取到 parts 的 filed 中
         const parts = ctx.multipart({ autoFields: true });
@@ -25,7 +24,7 @@ class EquipmentController extends Controller {
                 // 获取其他参数
             } else {
                 if (!part.filename) return
-                    // 处理文件流
+                // 处理文件流
                 let file = {};
                 let time = Date.now();
                 file.name = part.filename;
@@ -33,7 +32,9 @@ class EquipmentController extends Controller {
                 let filePath = path.join(this.config.equipment, time + part.filename); // 保存地址
                 let writable = fs.createWriteStream(filePath); // 创建写入流
                 await part.pipe(writable); // 开始写入
-                file.path = "http://" + this.app.config.cluster.listen.hostname + ":" + this.app.config.cluster.listen.port + this.config.static.prefix + 'images/equipment/' + time + part.filename;
+                file.path = "http://" + this.app.config.cluster.listen.hostname + ":" +
+                    this.app.config.cluster.listen.port + this.config.static.prefix +
+                    'images/equipment/' + time + part.filename;
                 img.push(file);
             }
         }

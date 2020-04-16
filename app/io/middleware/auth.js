@@ -26,8 +26,6 @@ module.exports = () => {
             socket.disconnect();
             return;
         }
-        // const say = await ctx.service.user.say();
-        // ctx.socket.emit('res', 'auth!' + say + 'id:' + ctx.socket.id);
         await next();
         //断开连接
         //解决强制退出id被删除的问题
